@@ -1,0 +1,46 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 400,
+  "data": {"url": "data/figure-1-number-of-domes.csv"},
+  "params": [
+    {
+      "name": "year_slider",
+      "value": 2024,
+      "bind": {"input": "range", "min": 2015, "max": 2024, "step": 1, "name": "Year: "}
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Year == year_slider"},
+    {
+      "fold": [
+        "Domestic commencing students",
+        "Overseas commencing students",
+        "Commonwealth supported commencing"
+      ],
+      "as": ["Student Category", "Number of Students"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Student Category",
+      "type": "nominal",
+      "axis": {"labelAngle": -45},
+      "sort": "-y"
+    },
+    "y": {
+      "field": "Number of Students",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "Student Category",
+      "type": "nominal",
+      "legend": {"title": "Student Category"}
+    },
+    "tooltip": [
+      {"field": "Student Category", "type": "nominal"},
+      {"field": "Number of Students", "type": "quantitative", "format": ","}
+    ]
+  }
+}
