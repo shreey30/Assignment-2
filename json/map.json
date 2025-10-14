@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 640,
+  "projection": {
+    "type": "mercator",
+    "center": [134, -25],
+    "scale": 750,
+    "translate": [450, 320]
+  },
+  "layer": [
+    {
+      "data": { "sphere": true },
+      "mark": { "type": "geoshape", "fill": "#e6f3ff" }
+    },
+    {
+      "data": { "graticule": true },
+      "mark": { "type": "geoshape", "stroke": "#d1d1d1", "strokeWidth": 0.5 }
+    },
+    {
+      "data": {
+        "url": "data/australia_states.topojson",
+        "format": { "type": "topojson", "feature": "ne_10m_admin_1_states_provinces" }
+      },
+      "transform": [
+        {
+          "lookup": "properties.state",
+          "from": {
+            "data": { "url": "data/mapdata.csv" },
+            "key": "Category",
+            "fields": ["AU"]
+          }
+        }
+      ],
+      "mark": "geoshape",
+      "encoding": {
+        "color": {
+          "field": "AU",
+          "type": "quantitative",
+          "title": "Business Concentration",
+          "scale": { "scheme": "blues" }
+        },
+        "tooltip": [
+          { "field": "properties.state", "title": "State/Territory" },
+          { "field": "AU", "type": "quantitative", "title": "Concentration" }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": { "stroke": "white", "strokeWidth": 1 },
+    "legend": { "orient": "right" }
+  }
+}

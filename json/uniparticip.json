@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 900,
+  "height": 360,
+  "data": { "url": "data/figure-6-indicative-tren.csv" },
+  "transform": [
+    { "fold": ["Age 18", "Age 19"], "as": ["Age Group", "Value"] }
+  ],
+  "layer": [
+    {
+      "mark": { "type": "line", "point": true, "strokeWidth": 2 },
+      "encoding": {
+        "x": { "field": "Year", "type": "quantitative", "title": "Year" },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Value",
+          "axis": { "format": ".1f" }
+        },
+        "color": {
+          "field": "Age Group",
+          "type": "nominal",
+          "title": "Age Group"
+        },
+        "tooltip": [
+          { "field": "Year", "type": "quantitative", "title": "Year" },
+          { "field": "Age Group", "type": "nominal", "title": "Age" },
+          { "field": "Value", "type": "quantitative", "title": "Value", "format": ".1f" }
+        ]
+      }
+    },
+    {
+      "data": { "values": [{ "Year": 2017 }] },
+      "mark": { "type": "rule" },
+      "encoding": {
+        "x": { "field": "Year", "type": "quantitative" },
+        "color": { "value": "#888" }
+      }
+    },
+    {
+      "data": { "values": [{ "Year": 2017, "y": 41.8, "label": "Peak (Age 19) in 2017" }] },
+      "mark": { "type": "text", "dx": 6, "dy": -6, "fontSize": 11 },
+      "encoding": {
+        "x": { "field": "Year", "type": "quantitative" },
+        "y": { "field": "y", "type": "quantitative" },
+        "text": { "field": "label" },
+        "color": { "value": "#555" }
+      }
+    }
+  ],
+  "config": {
+    "axis": { "labelFontSize": 12, "titleFontSize": 12 }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "data/revenue-across-time-data.csv"},
+  "transform": [
+    {
+      "lookup": "Category",
+      "from": {
+        "data": {"url": "data/profit-data.csv"},
+        "key": "Category",
+        "fields": ["Profit Margin"]
+      }
+    }
+  ],
+  "vconcat": [
+    {
+      "width": 800,
+      "height": 250,
+      "title": "Annual Revenue (Drag on this chart to filter)",
+      "params": [
+        {
+          "name": "year_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
+      "mark": {"type": "line", "strokeWidth": 2.5, "point": true, "color": "#4c78a8"},
+      "encoding": {
+        "x": {"field": "Category", "type": "ordinal", "title": null},
+        "y": {
+          "field": "Annual Revenue ($bn)",
+          "type": "quantitative",
+          "scale": {"domain": [30, 50]},
+          "title": "Amount ($ billions)"
+        },
+        "opacity": {
+          "condition": {"param": "year_brush", "value": 1},
+          "value": 0.3
+        },
+        "tooltip": [
+          {"field": "Category", "type": "ordinal", "title": "Year"},
+          {"field": "Annual Revenue ($bn)", "type": "quantitative", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "width": 800,
+      "height": 100,
+      "title": "Profit Margin (Filtered by selection above)",
+      "transform": [{"filter": {"param": "year_brush"}}],
+      "mark": {"type": "line", "color": "gray"},
+      "encoding": {
+        "x": {"field": "Category", "type": "ordinal", "title": "Year"},
+        "y": {
+          "field": "Profit Margin",
+          "type": "quantitative",
+          "title": "Profit Margin (%)"
+        },
+        "tooltip": [
+          {"field": "Category", "type": "ordinal", "title": "Year"},
+          {"field": "Profit Margin", "type": "quantitative", "format": ".1f", "title": "Margin (%)"}
+        ]
+      }
+    }
+  ]
+}

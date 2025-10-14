@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Australian Higher Ed Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    /* This creates the side-by-side layout */
+    .chart-with-text-container {
+      display: flex;
+      gap: 10px; /* Adjust the space between the chart and text */
+      align-items: flex-start;
+    }
+
+    /* This makes the chart take up more space */
+    .chart-container {
+      flex: 3; /* The chart will be 3 parts wide */
+    }
+
+    /* This makes the text take up less space */
+    .insights-text {
+      flex: 1; /* The text will be 1 part wide */
+      padding-top: 40px; /* Optional: Aligns text with chart */
+    }
+
+    .page-header {
+    text-align: center; /* Center the title and subtitle */
+    margin-bottom: 40px; /* Add space below the header */
+  }
+
+  .page-header h1 {
+    font-size: 2.5em; /* Make the main title larger */
+    margin-bottom: 10px;
+  }
+
+  .page-header .subtitle {
+    font-size: 1.1em;
+    color: #555; /* Make the subtitle grey */
+    max-width: 800px; /* Stop the text from becoming too wide */
+    margin: 0 auto; /* This helps center the subtitle when max-width is used */
+  }
+
+  </style>
+
+</head>
+
+</head>
+<body>
+  
+  <div class="page-header">
+    <h1>Australian Higher Education: A Visual Overview</h1>
+    <p class="subtitle">
+      introductory para
+    </p>
+  </div>
+
+  <hr> <h2>Australian Business Concentration Map</h2>
+
+<div class="chart-with-text-container">
+  
+  <div id="mapVis" class="chart-container"></div>
+
+  <div class="insights-text">
+    <h3>Key Insights</h3>
+    <p>
+      Comment on trend.
+    </p>
+    <p>
+      Other insights
+    </p>
+  </div>
+
+</div>
+
+  <hr> <h2>Indicative Trends for University Participation</h2>
+<div class="chart-with-text-container">
+  
+  <div id="chartVis" class="chart-container"></div>
+
+  <div class="insights-text">
+    <h3>Key Insights</h3>
+    <p>
+      Comment on trend.
+    </p>
+    <p>
+      Other insights
+    </p>
+  </div>
+
+</div>
+
+  <hr> <h2>Proportion of domestic students who enrol into undergraduate programs within 3 years of their year 12</h2>
+
+<div class="chart-with-text-container">
+  
+  <div id="chart2Vis" class="chart-container"></div>
+
+  <div class="insights-text">
+    <h3>Key Insights</h3>
+    <p>
+      This chart shows the trend of students moving directly from high school to higher education. Both immediate and delayed entry rates are increasing, indicating a growing overall participation in higher education. The gap between the two lines (immediate vs total within three years) shows that a significant share of students delay entry — but the gap remains fairly stable, suggesting consistent patterns of delayed enrolment. The slight drop around 2020-2021 likely reflects external disruptions (pandemic, economic uncertainty), but the overall trend remains upward.
+    </p>
+    <p>
+      Between the 2017 and 2023 Year 12 cohorts, the proportion of students commencing undergraduate study immediately after school rose from 36.7% to 42.9%, while the share commencing within three years increased from 45.5% (2017) to 50.9% (2021). Although data for the 2022 and 2023 cohorts are incomplete, projections based on past patterns suggest the 2023 cohort will reach around 52.8% by 2026. A minor shift occurred for the 2020 cohort, where more students entered university directly after Year 12, likely due to reduced gap-year opportunities during the COVID-19 pandemic.
+    </p>
+  </div>
+
+</div>
+
+  <hr> <h2>Business performance</h2>
+<div class="chart-with-text-container">
+  
+  <div id="chart3Vis" class="chart-container"></div>
+
+  <div class="insights-text">
+    <h3>Key Insights</h3>
+    <p>
+      Comment on trend.
+    </p>
+    <p>
+      Other insights
+    </p>
+  </div>
+
+</div>
+
+  <hr> <h2>Product and Service segmentation</h2>
+<div class="chart-with-text-container">
+  
+  <div id="treemapVis" class="chart-container"></div>
+
+  <div class="insights-text">
+    <h3>Key Insights</h3>
+    <p>
+      Comment on trend.
+    </p>
+    <p>
+      Other insights
+    </p>
+  </div>
+
+</div>
+
+  <script>
+    // This embeds your map into the #mapVis container
+    vegaEmbed('#mapVis', 'json/map.json');
+
+    // This embeds your line chart into the #chartVis container
+    // Make sure the path 'json/chart.json' is correct
+    vegaEmbed('#chartVis', 'json/uniparticip.json');
+
+    vegaEmbed('#chart2Vis', 'json/undergradwithin3ysofyear12.json')
+
+    vegaEmbed('#chart3Vis', 'json/revandprofitacrosstime.json')
+
+    vegaEmbed('#treemapVis', 'json/prodservicetreemap.json')
+  </script>
+
+</body>
+</html>

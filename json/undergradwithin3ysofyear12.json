@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 880,
+  "height": 420,
+  "title": "Proportion of Domestic Students Entering Undergrad from Year 12",
+  "data": {
+    "values": [
+      {"Year": 2017, "Value": 45.5, "Series": "Enrolled as of 2024"},
+      {"Year": 2018, "Value": 46.5, "Series": "Enrolled as of 2024"},
+      {"Year": 2019, "Value": 48.1, "Series": "Enrolled as of 2024"},
+      {"Year": 2020, "Value": 51.2, "Series": "Enrolled as of 2024"},
+      {"Year": 2021, "Value": 50.9, "Series": "Enrolled as of 2024"},
+
+      {"Year": 2021, "Value": 50.9, "Series": "Predicted incoming"},
+      {"Year": 2022, "Value": 52.7, "Series": "Predicted incoming"},
+      {"Year": 2023, "Value": 52.8, "Series": "Predicted incoming"},
+      
+      {"Year": 2017, "Value": 36.7, "Series": "Straight to higher education"},
+      {"Year": 2018, "Value": 37.5, "Series": "Straight to higher education"},
+      {"Year": 2019, "Value": 38.7, "Series": "Straight to higher education"},
+      {"Year": 2020, "Value": 42.8, "Series": "Straight to higher education"},
+      {"Year": 2021, "Value": 41.2, "Series": "Straight to higher education"},
+      {"Year": 2022, "Value": 42.5, "Series": "Straight to higher education"},
+      {"Year": 2023, "Value": 42.9, "Series": "Straight to higher education"}
+    ]
+  },
+  "selection": {
+    "legend_selection": {
+      "type": "multi", "fields": ["Series"], "bind": "legend"
+    }
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 2.5
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "axis": {"title": "Year in Year 12", "format": "d"}
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "scale": {"domain": [35, 55]},
+      "axis": {"title": "Proportion of enrolled year 12 students (%)"}
+    },
+    "color": {
+      "field": "Series",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Enrolled as of 2024",
+          "Predicted incoming",
+          "Straight to higher education"
+        ],
+        "range": ["#4c78a8", "#4c78a8", "#f58518"]
+      }
+    },
+    "strokeDash": {
+      "condition": {
+        "test": "datum.Series === 'Predicted incoming'",
+        "value": [6, 4]
+      },
+      "value": [0]
+    },
+    "opacity": {
+      "condition": {"selection": "legend_selection", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "Year", "type": "quantitative", "format": "d"},
+      {"field": "Series", "type": "nominal"},
+      {"field": "Value", "type": "quantitative", "format": ".1f"}
+    ]
+  }
+}

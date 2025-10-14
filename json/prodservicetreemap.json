@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Product and Service Segmentation — University and Other Higher Education in Australia",
+  "width": 500,
+  "height": 640,
+  "data": {
+    "url": "data/product-services.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {"calculate": "'All'", "as": "Group"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Group", "type": "nominal", "axis": null},
+    "y": {
+      "field": "University and Other Higher Education in Australia",
+      "type": "quantitative",
+      "stack": "normalize",
+      "axis": {"title": "Proportion of Total"}
+    },
+    "color": {"field": "Category", "type": "nominal", "legend": {"title": "Service Category"}},
+    "tooltip": [
+      {"field": "Category"},
+      {"field": "University and Other Higher Education in Australia", "format": ".1f"}
+    ]
+  }
+}
