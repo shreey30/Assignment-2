@@ -10,11 +10,12 @@
     {
       "mark": { "type": "line", "point": true, "strokeWidth": 2 },
       "encoding": {
-        "x": { "field": "Year", "type": "quantitative", "title": "Year" },
+        "x": { "field": "Year", "type": "ordinal", "title": "Year" },
         "y": {
           "field": "Value",
           "type": "quantitative",
           "title": "Value",
+          "scale": {"domain": [35, 50]},
           "axis": { "format": ".1f" }
         },
         "color": {
@@ -27,24 +28,6 @@
           { "field": "Age Group", "type": "nominal", "title": "Age" },
           { "field": "Value", "type": "quantitative", "title": "Value", "format": ".1f" }
         ]
-      }
-    },
-    {
-      "data": { "values": [{ "Year": 2017 }] },
-      "mark": { "type": "rule" },
-      "encoding": {
-        "x": { "field": "Year", "type": "quantitative" },
-        "color": { "value": "#888" }
-      }
-    },
-    {
-      "data": { "values": [{ "Year": 2017, "y": 41.8, "label": "Peak (Age 19) in 2017" }] },
-      "mark": { "type": "text", "dx": 6, "dy": -6, "fontSize": 11 },
-      "encoding": {
-        "x": { "field": "Year", "type": "quantitative" },
-        "y": { "field": "y", "type": "quantitative" },
-        "text": { "field": "label" },
-        "color": { "value": "#555" }
       }
     }
   ],

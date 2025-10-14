@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 400,
+  "data": {"url": "data/cost-structure.csv"},
+  "params": [
+    {
+      "name": "year_slider",
+      "value": 2025,
+      "bind": {"input": "range", "min": 2008, "max": 2025, "step": 1, "name": "Year: "}
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Level == 'Industry'"},
+    {"filter": "datum.Year == year_slider"},
+    {
+      "fold": ["Wages", "Purchases", "Profit", "Depreciation", "Rent", "Utilities", "Other Costs"],
+      "as": ["Cost Component", "Value"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Cost Component",
+      "type": "nominal",
+      "axis": {"labelAngle": -45},
+      "sort": "-y"
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Percentage of Revenue (%)"
+    },
+    "color": {
+      "field": "Cost Component",
+      "type": "nominal",
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "Cost Component", "type": "nominal"},
+      {"field": "Value", "type": "quantitative", "format": ".1f", "title": "Value"}
+    ]
+  }
+}
