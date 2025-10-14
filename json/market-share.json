@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "data": {"url": "data/market-share/market-share-data.csv"},
+  "params": [
+    {
+      "name": "year_slider",
+      "value": 2025,
+      "bind": {"input": "range", "min": 2021, "max": 2025, "step": 1, "name": "Year: "}
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Year == year_slider"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 80, "outerRadius": 160, "tooltip": true},
+      "encoding": {
+        "theta": {
+          "field": "University and Other Higher Education in Australia", 
+          "type": "quantitative",
+          "stack": true
+        },
+        "color": {
+          "field": "Category",
+          "type": "nominal",
+          "legend": {"title": "Institution"}
+        }
+      }
+    }
+  ]
+}

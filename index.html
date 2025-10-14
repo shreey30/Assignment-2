@@ -144,6 +144,23 @@
 
 </div>
 
+  <hr> <h2>Market Share</h2>
+<div class="chart-with-text-container">
+  
+  <div id="piechartVis" class="chart-container"></div>
+
+  <div class="insights-text">
+    <h3>Key Insights</h3>
+    <p>
+      Comment on trend.
+    </p>
+    <p>
+      Other insights
+    </p>
+  </div>
+
+</div>
+
   <script>
     // This embeds your map into the #mapVis container
     vegaEmbed('#mapVis', 'json/map.json');
@@ -157,6 +174,8 @@
     vegaEmbed('#chart3Vis', 'json/revandprofitacrosstime.json')
 
     vegaEmbed('#treemapVis', 'json/prodservicetreemap.json')
+
+    vegaEmbed('#piechartVis', 'json/market-share.json')
   </script>
 
 </body>
