@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 400,
+  "title": "Gender Distribution of Domestic Students Over Time",
+  "data": {"url": "data/figure-3-commencing-dome.csv"},
+  "transform": [
+    {
+      "fold": ["Females", "Males", "Indeterminate/intersex/other"],
+      "as": ["Gender", "Count"]
+    },
+    {
+      "filter": "datum.Gender !== 'Indeterminate/intersex/other'"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": true,
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "Count",
+      "type": "quantitative",
+      "scale": {"domain": [140000, 280000]},
+      "title": "Number of Students"
+    },
+    "color": {
+      "field": "Gender",
+      "type": "nominal",
+      "legend": {"title": "Gender"}
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal"},
+      {"field": "Gender", "type": "nominal"},
+      {"field": "Count", "type": "quantitative", "format": ","}
+    ]
+  }
+}
