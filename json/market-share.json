@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400,
-  "height": 400,
+  "width": "container",
+  "height": "container",
   "data": {"url": "data/market-share/market-share-data.csv"},
   "params": [
     {
@@ -17,7 +17,7 @@
   ],
   "layer": [
     {
-      "mark": {"type": "arc", "innerRadius": 80, "outerRadius": 160, "tooltip": true},
+      "mark": {"type": "arc", "innerRadius": 50, "tooltip": true},
       "encoding": {
         "theta": {
           "field": "University and Other Higher Education in Australia", 

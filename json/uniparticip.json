@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 360,
+  "width": "container",
+  "height": "container",
   "data": { "url": "data/figure-6-indicative-tren.csv" },
   "transform": [
     { "fold": ["Age 18", "Age 19"], "as": ["Age Group", "Value"] }

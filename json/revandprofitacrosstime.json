@@ -13,7 +13,7 @@
   ],
   "vconcat": [
     {
-      "width": 800,
+      "width": "container",
       "height": 250,
       "title": "Annual Revenue (Drag on this chart to filter)",
       "params": [
@@ -42,7 +42,7 @@
       }
     },
     {
-      "width": 800,
+      "width": "container",
       "height": 100,
       "title": "Profit Margin (Filtered by selection above)",
       "transform": [{"filter": {"param": "year_brush"}}],

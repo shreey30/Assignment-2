@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Product and Service Segmentation — University and Other Higher Education in Australia",
-  "width": 500,
-  "height": 640,
+  "width": "container",
+  "height": "container",
   "data": {
     "url": "data/product-services.csv",
     "format": {"type": "csv"}

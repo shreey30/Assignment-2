@@ -7,43 +7,50 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-  <style>
-    /* This creates the side-by-side layout */
-    .chart-with-text-container {
-      display: flex;
-      gap: 10px; /* Adjust the space between the chart and text */
-      align-items: flex-start;
-    }
-
-    /* This makes the chart take up more space */
-    .chart-container {
-      flex: 3; /* The chart will be 3 parts wide */
-    }
-
-    /* This makes the text take up less space */
-    .insights-text {
-      flex: 1; /* The text will be 1 part wide */
-      padding-top: 40px; /* Optional: Aligns text with chart */
-    }
-
-    .page-header {
-    text-align: center; /* Center the title and subtitle */
-    margin-bottom: 40px; /* Add space below the header */
+<style>
+  body {
+    font-family: sans-serif;
   }
 
-  .page-header h1 {
-    font-size: 2.5em; /* Make the main title larger */
-    margin-bottom: 10px;
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
   }
 
-  .page-header .subtitle {
-    font-size: 1.1em;
-    color: #555; /* Make the subtitle grey */
-    max-width: 800px; /* Stop the text from becoming too wide */
-    margin: 0 auto; /* This helps center the subtitle when max-width is used */
+  .visualization-grid {
+    display: grid;
+    /* This creates a 3-column grid and ensures columns are flexible */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* To switch to a 2-column grid, just change the line above to: */
+    
+    gap: 30px; 
+    max-width: 1800px;
+    margin: 0 auto;
   }
 
-  </style>
+  .grid-cell {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .grid-cell h3 {
+    margin-top: 0;
+  }
+
+  .vis-container {
+    flex-grow: 1;
+    min-height: 300px; 
+  }
+
+  .comments {
+    font-size: 0.9em;
+    color: #555;
+    /* This is changed from 'auto' to prevent overlapping with sliders */
+    margin-top: 25px; 
+  }
+</style>
 
 </head>
 
@@ -57,159 +64,61 @@
     </p>
   </div>
 
-  <hr> <h2>Australian Business Concentration Map</h2>
-
-<div class="chart-with-text-container">
-  
-  <div id="mapVis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+<div class="visualization-grid">
+  <div class="grid-cell">
+    <h3>Australian Business Concentration Map</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="mapVis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Indicative Trends for University Participation</h2>
-<div class="chart-with-text-container">
-  
-  <div id="chartVis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+  <div class="grid-cell">
+    <h3>Indicative Trends for University Participation</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="chartVis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Proportion of domestic students who enrol into undergraduate programs within 3 years of their year 12</h2>
-
-<div class="chart-with-text-container">
-  
-  <div id="chart2Vis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      This chart shows the trend of students moving directly from high school to higher education. Both immediate and delayed entry rates are increasing, indicating a growing overall participation in higher education. The gap between the two lines (immediate vs total within three years) shows that a significant share of students delay entry — but the gap remains fairly stable, suggesting consistent patterns of delayed enrolment. The slight drop around 2020-2021 likely reflects external disruptions (pandemic, economic uncertainty), but the overall trend remains upward.
-    </p>
-    <p>
-      Between the 2017 and 2023 Year 12 cohorts, the proportion of students commencing undergraduate study immediately after school rose from 36.7% to 42.9%, while the share commencing within three years increased from 45.5% (2017) to 50.9% (2021). Although data for the 2022 and 2023 cohorts are incomplete, projections based on past patterns suggest the 2023 cohort will reach around 52.8% by 2026. A minor shift occurred for the 2020 cohort, where more students entered university directly after Year 12, likely due to reduced gap-year opportunities during the COVID-19 pandemic.
-    </p>
+  <div class="grid-cell">
+    <h3>Proportion of domestic students who enrol into undergraduate programs within 3 years of their year 12</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="chart2Vis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Business performance</h2>
-<div class="chart-with-text-container">
-  
-  <div id="chart3Vis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+  <div class="grid-cell">
+    <h3>Business performance</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="chart3Vis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Product and Service segmentation</h2>
-<div class="chart-with-text-container">
-  
-  <div id="treemapVis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+  <div class="grid-cell">
+    <h3>Product and Service segmentation</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="treemapVis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Market Share</h2>
-<div class="chart-with-text-container">
-  
-  <div id="piechartVis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+  <div class="grid-cell">
+    <h3>Market Share</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="piechartVis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Cost Structure</h2>
-<div class="chart-with-text-container">
-  
-  <div id="barchartVis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+  <div class="grid-cell">
+    <h3>Cost Structure</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="barchartVis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Student distribuition</h2>
-<div class="chart-with-text-container">
-  
-  <div id="barchart2Vis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+  <div class="grid-cell">
+    <h3>Student distribuition</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="barchart2Vis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
-</div>
-
-  <hr> <h2>Gender gap in comencing domestic undergraduates</h2>
-<div class="chart-with-text-container">
-  
-  <div id="stackedcolumnVis" class="chart-container"></div>
-
-  <div class="insights-text">
-    <h3>Key Insights</h3>
-    <p>
-      Comment on trend.
-    </p>
-    <p>
-      Other insights
-    </p>
+  <div class="grid-cell">
+    <h3>Gender gap in commencing domestic undergraduate</h3>
+    <p>A short description of what this chart shows.</p>
+    <div id="stackedcolumnVis" class="vis-container"></div>
+    <p class="comments"><i>Comments or annotations about this chart.</i></p>
   </div>
-
 </div>
 
   <script>
