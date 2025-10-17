@@ -10,6 +10,7 @@
 <style>
   body {
     font-family: sans-serif;
+    background-color: #f4f4f7; /* Adds a light grey background to the whole page */
   }
 
   .page-header {
@@ -19,20 +20,20 @@
 
   .visualization-grid {
     display: grid;
-    /* This creates a 3-column grid and ensures columns are flexible */
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    /* To switch to a 2-column grid, just change the line above to: */
-    
     gap: 30px; 
     max-width: 1800px;
     margin: 0 auto;
   }
 
   .grid-cell {
+    background-color: white; /* Ensures the cell background is white */
     border: 1px solid #e0e0e0;
+    border-radius: 8px; /* Rounds the corners of the cell */
     padding: 20px;
     display: flex;
     flex-direction: column; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Adds a subtle shadow */
   }
 
   .grid-cell h3 {
@@ -47,7 +48,6 @@
   .comments {
     font-size: 0.9em;
     color: #555;
-    /* This is changed from 'auto' to prevent overlapping with sliders */
     margin-top: 25px; 
   }
 </style>
@@ -60,7 +60,7 @@
   <div class="page-header">
     <h1>Australian Higher Education: A Visual Overview</h1>
     <p class="subtitle">
-      introductory para
+      The following visualisation explores the diverse and dynamic landscape of Australia’s universities and other higher education institutions. It highlights both the business aspects of the sector and key statistics on student enrolments across the country. Drawing on data from IBISWorld and the Department of Education, it reveals how participation and institutional presence vary by region and over time. These insights help capture how Australia's higher education industry continues to evolve in scale, accessibility, and economic significance.
     </p>
   </div>
 
