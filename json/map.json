@@ -2,53 +2,70 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": "container",
-  "projection": {
-    "type": "conicConformal",
-    "rotate": [-134, 0, 0],
-    "center": [0, -29.5],
-    "scale": 345
-  },
+
+  "params": [
+    {
+      "name": "metric_select",
+      "value": "Enterprises (Units)",
+      "bind": {"input": "select",
+        "options": [
+          "Enterprises (Units)",
+          "Enterprises (%)",
+          "Enterprises (YoY Growth %)",
+          "Population (%)"
+        ],
+        "name": "Select Metric: "
+      }
+    },
+    { "name": "year_slider", "value": 2024,
+      "bind": {"input": "range", "min": 2016, "max": 2025, "step": 1, "name": "Year: "}
+    }
+  ],
+
+  "projection": { "type": "conicConformal", "rotate": [-134, 0, 0], "center": [0, -29.5], "scale": 300 },
+
   "layer": [
+    { "data": { "sphere": true }, "mark": { "type": "geoshape", "fill": "#e6f3ff" } },
+    { "data": { "graticule": true }, "mark": { "type": "geoshape", "stroke": "#d1d1d1", "strokeWidth": 0.5 }},
+
     {
-      "data": { "sphere": true },
-      "mark": { "type": "geoshape", "fill": "#e6f3ff" }
-    },
-    {
-      "data": { "graticule": true },
-      "mark": { "type": "geoshape", "stroke": "#d1d1d1", "strokeWidth": 0.5 }
-    },
-    {
-      "data": {
-        "url": "data/australia_states.topojson",
-        "format": { "type": "topojson", "feature": "ne_10m_admin_1_states_provinces" }
-      },
+      "data": { "url": "data/mapdata.csv",
+                "format": { "type": "csv", "parse": {"Year": "number"} } },   
       "transform": [
+        { "filter": "toNumber(datum.Year) == toNumber(year_slider)" },       
+        { "calculate": "datum[metric_select]", "as": "selectedValue" },
         {
-          "lookup": "properties.state",
+          "lookup": "State/Territory",
           "from": {
-            "data": { "url": "data/mapdata.csv" },
-            "key": "Category",
-            "fields": ["AU"]
+            "data": {
+              "url": "data/australia_states.topojson",
+              "format": { "type": "topojson", "feature": "ne_10m_admin_1_states_provinces" }
+            },
+            "key": "properties.state",
+            "fields": ["geometry"]
           }
         }
       ],
-      "mark": "geoshape",
+      "mark": {"type": "geoshape"},
       "encoding": {
+        "shape": {"field": "geometry", "type": "geojson"},
         "color": {
-          "field": "AU",
-          "type": "quantitative",
-          "title": "Business Concentration",
-          "scale": { "scheme": "blues" }
+          "field": "selectedValue", "type": "quantitative",
+          "title": {"expr": "metric_select"}, "scale": {"scheme": "blues"}
         },
         "tooltip": [
-          { "field": "properties.state", "title": "State/Territory" },
-          { "field": "AU", "type": "quantitative", "title": "Concentration" }
+          {"field": "State/Territory", "title": "State/Territory"},
+          {"field": "Year", "type": "quantitative"},
+          {"field": "selectedValue", "type": "quantitative", "title": {"expr": "metric_select"}}
         ]
       }
+    },
+
+    { "data": { "url": "data/australia_states.topojson",
+                "format": { "type": "topojson", "feature": "ne_10m_admin_1_states_provinces" } },
+      "mark": { "type": "geoshape", "fill": "transparent", "stroke": "#ffffff", "strokeWidth": 0.75 }
     }
   ],
-  "config": {
-    "view": { "stroke": "white", "strokeWidth": 1 },
-    "legend": { "orient": "right" }
-  }
+
+  "config": { "view": { "stroke": "white", "strokeWidth": 1 }, "legend": { "orient": "right" } }
 }
