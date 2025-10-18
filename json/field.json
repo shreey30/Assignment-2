@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 500,
+  "title": "Change in Commencing Domestic Students by Field of Study (2015 vs. 2024)",
+  "data": {"url": "data/field-data.csv"},
+  "transform": [
+    {
+      "filter": "datum.Category !== 'All Domestic Commencing Students'"
+    },
+    {
+      "fold": ["2015", "2024"],
+      "as": ["Year", "Student Count"]
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Category",
+      "type": "nominal",
+      "title": "Field of Study",
+      "sort": {
+        "op": "sum",
+        "field": "Student Count",
+        "order": "descending"
+      }
+    },
+    "x": {
+      "field": "Student Count",
+      "type": "quantitative",
+      "title": "Number of Commencing Students"
+    }
+  },
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "detail": {"field": "Category", "type": "nominal"},
+        "color": {"value": "#dbdbdb"}
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "encoding": {
+        "color": {
+          "field": "Year",
+          "type": "nominal",
+          "legend": {"title": "Year"},
+          "scale": {"range": ["#e6959c", "#91cf60"]}
+        },
+        "size": {"value": 100},
+        "tooltip": [
+          {"field": "Category", "type": "nominal"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Student Count", "type": "quantitative", "format": ","}
+        ]
+      }
+    }
+  ]
+}
