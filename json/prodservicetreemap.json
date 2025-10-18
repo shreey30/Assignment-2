@@ -8,7 +8,6 @@
   },
   "mark": {
     "type": "arc",
-    "innerRadius": 50,
     "tooltip": true
   },
   "encoding": {

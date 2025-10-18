@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": "container",
-  "data": {"url": "data/market-share/market-share-data.csv"},
+  "data": {"url": "data/market-share-data.csv"},
   "params": [
     {
       "name": "year_slider",
@@ -17,11 +17,12 @@
   ],
   "layer": [
     {
-      "mark": {"type": "arc", "innerRadius": 50, "tooltip": true},
+      "mark": {"type": "arc", "tooltip": true},
       "encoding": {
         "theta": {
           "field": "University and Other Higher Education in Australia", 
           "type": "quantitative",
+          "title": "Market share (%)",
           "stack": true
         },
         "color": {

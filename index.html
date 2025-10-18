@@ -60,79 +60,75 @@
   <div class="page-header">
     <h1>Australian Higher Education: A Visual Overview</h1>
     <p class="subtitle">
-      The following visualisation explores the diverse and dynamic landscape of Australia’s universities and other higher education institutions. It highlights both the business aspects of the sector and key statistics on student enrolments across the country. Drawing on data from IBISWorld and the Department of Education, it reveals how participation and institutional presence vary by region and over time. These insights help capture how Australia's higher education industry continues to evolve in scale, accessibility, and economic significance.
+      The following visualisation explores the diverse and dynamic landscape of Australia's universities and other higher education institutions. It highlights both the business aspects of the sector and key statistics on student enrolments across the country. Drawing on data from IBISWorld and the Department of Education, it reveals how participation and institutional presence vary by region and over time. These insights help capture how Australia's higher education industry continues to evolve in scale, accessibility, and economic significance.
     </p>
   </div>
 
-<div class="visualization-grid">
-  <div class="grid-cell">
-    <h3>Australian Business Concentration Map</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="mapVis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
+  <!-- Section 1: The Business of Higher Education -->
+  <h2>The Business of Higher Education</h2>
+  <div class="visualization-grid">
+    <div class="grid-cell">
+      <h3>Business performance</h3>
+      <div id="chart3Vis" class="vis-container"></div>
+      <p class="comments"><i>This visualisation highlights how the business side of Australian universities has shifted in recent years. After a sharp drop during the pandemic, revenue is recovering as international students return to campuses. Domestic students continue to benefit from government loan programs, but international enrolments remain the main source of profit. At the same time, universities are adapting to funding changes, staff pay disputes, and growing pressure to offer secure jobs. A weaker Australian dollar and a larger student-age population are also helping to keep demand for higher education strong.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Market Share</h3>
+      <div id="piechartVis" class="vis-container"></div>
+      <p class="comments"><i>This chart shows how market share is distributed among Australia's major universities. The University of Sydney is strengthening its position through major research investments, including government funding to launch Quantum Australia, a national centre for quantum research. Meanwhile, the University of Melbourne is improving its financial standing by reducing deficits and managing costs, aiming to break even by 2025. Together, these changes reflect how leading institutions are adapting to stay competitive in a rapidly evolving higher education landscape.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Geographical breakdown</h3>
+      <div id="mapVis" class="vis-container"></div>
+      <p class="comments"><i>This map shows how universities and higher education institutions are spread across Australia. New South Wales stands out as the state with the most universities and international students, helped by Sydney's long academic history and global appeal. Victoria follows closely, home to top-ranked universities like Melbourne and Monash, which attract students for both research and city life. Other states also play important roles — for example, Western Australia supports mining-focused courses, and South Australia is preparing for a major university merger. Together, these regions reflect how Australia's higher education industry is nationally connected but shaped by each state's strengths and industries.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Product and Service segmentation</h3>
+      <div id="treemapVis" class="vis-container"></div>
+      <p class="comments"><i>This chart shows how Australia's higher education sector is divided across different types of courses and services. Undergraduate degrees make up the largest share, as most students enrol in bachelor's programs soon after finishing school. Postgraduate study, such as master's and doctoral degrees, has slowed recently because strong job prospects mean many graduates go straight into work. Research activity remains vital for universities, though private sector funding has eased since the pandemic. At the same time, institutions are innovating — expanding online and hybrid learning options and adding new courses in fast-growing areas like artificial intelligence.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Cost Structure</h3>
+      <div id="barchartVis" class="vis-container"></div>
+      <p class="comments"><i>This chart shows how universities spend their revenue, with wages making up the largest share due to the labour-intensive nature of teaching and research. Rising staff costs, union strikes, and underpayment scandals have all pushed wage expenses higher in recent years, cutting into profit margins. Other major costs include research equipment, library subscriptions, and infrastructure depreciation, while rent remains low thanks to universities owning much of their property. Although energy and technology costs are rising, institutions are increasingly turning to renewable power and digital efficiency to manage expenses.</i></p>
+    </div>
   </div>
-  <div class="grid-cell">
-    <h3>Indicative Trends for University Participation</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="chartVis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
+
+  <hr style="margin: 40px 0;">
+
+  <!-- Section 2: Student Enrolment and Demographics -->
+  <h2>Student Enrolment and Demographics 🎓</h2>
+  <div class="visualization-grid">
+    <div class="grid-cell">
+      <h3>Student distribuition</h3>
+      <div id="barchart2Vis" class="vis-container"></div>
+      <p class="comments"><i>This chart shows how student enrolments in Australian higher education have started to recover after several years of disruption. In 2024, both domestic and international student numbers grew, returning to or surpassing pre-pandemic levels. Overseas commencements reached record highs, reflecting renewed global interest in studying in Australia, while domestic enrolments also rose as more students took up Commonwealth supported places.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Gender gap in commencing domestic undergraduate</h3>
+      <div id="stackedcolumnVis" class="vis-container"></div>
+      <p class="comments"><i>This chart highlights the growing gender gap among domestic undergraduate students in Australia. Over the past decade, the number of female students has steadily increased while male enrolments have declined. By 2024, women made up around 62% of new domestic undergraduates, up from 58% in 2015. The shift reflects long-term social and economic trends, as well as temporary factors like the pandemic, which saw stronger enrolment growth for females. Rising male participation in vocational education and differences in school completion rates may also be contributing to this imbalance.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Indicative Trends for University Participation</h3>
+      <div id="chartVis" class="vis-container"></div>
+      <p class="comments"><i>This chart shows participation in higher education among 18- and 19-year-olds over time. University participation peaked in 2021 during the pandemic, when more school leavers chose to study rather than work or travel, but has since returned to pre-pandemic levels. In 2024, around 39% of 18-year-olds and 40% of 19-year-olds were enrolled in undergraduate study. Factors like changing Year 12 completion rates, gap years, and first-year attrition all influence these participation trends.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Proportion of domestic students who enrol into undergraduate programs within 3 years of their year</h3>
+      <div id="chart2Vis" class="vis-container"></div>
+      <p class="comments"><i>This chart shows how more Year 12 graduates are moving into university studies, either immediately or within three years of finishing school. The share of students enrolling straight after Year 12 has grown steadily from 37% in 2017 to about 43% for the 2023 cohort. When including those who delay study, overall participation within three years is expected to reach nearly 53%. The slight rise for the 2020 cohort reflects the pandemic's impact, as limited travel and work options encouraged more students to go directly into higher education.</i></p>
+    </div>
+    <div class="grid-cell">
+      <h3>Commencing undergraduate domestic students by educational field</h3>
+      <div id="chart4Vis" class="vis-container"></div>
+      <p class="comments"><i>This chart compares how domestic undergraduate commencements have shifted across fields of study between 2015 and 2024. After a dip in 2023, 2024 saw strong growth in Education and Health — two key national priority areas. Information Technology has expanded rapidly over the past decade but growth has now slowed, suggesting the field may be stabilising after years of sharp increases driven by digital demand and pandemic-era enrolments.</i></p>
+    </div>
   </div>
-  <div class="grid-cell">
-    <h3>Proportion of domestic students who enrol into undergraduate programs within 3 years of their year 12</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="chart2Vis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-  <div class="grid-cell">
-    <h3>Business performance</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="chart3Vis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-  <div class="grid-cell">
-    <h3>Product and Service segmentation</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="treemapVis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-  <div class="grid-cell">
-    <h3>Market Share</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="piechartVis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-  <div class="grid-cell">
-    <h3>Cost Structure</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="barchartVis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-  <div class="grid-cell">
-    <h3>Student distribuition</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="barchart2Vis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-  <div class="grid-cell">
-    <h3>Gender gap in commencing domestic undergraduate</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="stackedcolumnVis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-  <div class="grid-cell">
-    <h3>Commencing undergraduate domestic students by educational field</h3>
-    <p>A short description of what this chart shows.</p>
-    <div id="chart4Vis" class="vis-container"></div>
-    <p class="comments"><i>Comments or annotations about this chart.</i></p>
-  </div>
-</div>
 
   <script>
-    // This embeds your map into the #mapVis container
-    vegaEmbed('#mapVis', 'json/map.json');
+    vegaEmbed('#mapVis', 'json/map.json')
 
-    // This embeds your line chart into the #chartVis container
-    // Make sure the path 'json/chart.json' is correct
     vegaEmbed('#chartVis', 'json/uniparticip.json');
 
     vegaEmbed('#chart2Vis', 'json/undergradwithin3ysofyear12.json')
