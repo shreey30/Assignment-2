@@ -10,7 +10,7 @@
 <style>
   body {
     font-family: sans-serif;
-    background-color: #f4f4f7; /* Adds a light grey background to the whole page */
+    background-color: #cbcbcb; /* Adds a light grey background to the whole page */
   }
 
   .page-header {
@@ -50,6 +50,38 @@
     color: #555;
     margin-top: 25px; 
   }
+
+  .page-footer {
+    text-align: center;
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 30px 40px;
+    margin-top: 60px;
+    font-size: 0.95em;
+    border-top: 2px solid #ddd;
+  }
+
+  .page-footer h4 {
+    margin-bottom: 10px;
+    color: #111;
+  }
+
+  .page-footer ol {
+    list-style-position: inside;
+    text-align: left;
+    margin: 0 auto 15px auto;
+    max-width: 800px;
+  }
+
+  .page-footer a {
+    color: #0645ad;
+    text-decoration: none;
+  }
+
+  .page-footer a:hover {
+    text-decoration: underline;
+  }
+
 </style>
 
 </head>
@@ -147,6 +179,26 @@
 
     vegaEmbed('#chart4Vis', 'json/field.json')
   </script>
+
+  <footer class="page-footer">
+    <h4>Sources</h4>
+    <ol style="text-align:left; display:inline-block; text-align: left; margin: 0 auto;">
+      <li>Larter, Nicholas. <i>Universities and Other Higher Education in Australia - Industry Report P8102.</i> IBISWorld, June 2025. Available at: 
+        <a href="https://my.ibisworld.com/au/en/industry/P8102/at-a-glance" target="_blank">
+          https://my.ibisworld.com/au/en/industry/P8102/at-a-glance
+        </a>
+      </li>
+      <li>Department of Education, Skills and Employment. <i>Higher Education Statistics 2024 - Student Data.</i> Australian Government, 2025. Available at: 
+        <a href="https://www.education.gov.au/higher-education-statistics" target="_blank">
+          https://www.education.gov.au/higher-education-statistics
+        </a>
+      </li>
+    </ol>
+
+    <p><strong>Author:</strong> Shreey Rupesh Fofaria &nbsp;|&nbsp; <strong>Date:</strong> October 2025</p>
+    <p><i>This dashboard was created for FIT3179 – Data Visualisation 2, Monash University.</i></p>
+  </footer>
+
 
 </body>
 </html>

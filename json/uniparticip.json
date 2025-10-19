@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": "container",
+  "title": "Indicative Trends for University Participation",
   "data": { "url": "data/figure-6-indicative-tren.csv" },
   "transform": [
     { "fold": ["Age 18", "Age 19"], "as": ["Age Group", "Value"] }
@@ -14,21 +15,87 @@
         "y": {
           "field": "Value",
           "type": "quantitative",
-          "title": "Value",
-          "scale": {"domain": [35, 50]},
+          "title": "Participation (%)",
+          "scale": { "domain": [35, 50] },
           "axis": { "format": ".1f" }
         },
-        "color": {
-          "field": "Age Group",
-          "type": "nominal",
-          "title": "Age Group"
-        },
+        "color": { "field": "Age Group", "type": "nominal", "title": "Age Group" },
         "tooltip": [
-          { "field": "Year", "type": "quantitative", "title": "Year" },
+          { "field": "Year", "type": "ordinal", "title": "Year" },
           { "field": "Age Group", "type": "nominal", "title": "Age" },
-          { "field": "Value", "type": "quantitative", "title": "Value", "format": ".1f" }
+          { "field": "Value", "type": "quantitative", "title": "Participation (%)", "format": ".1f" }
         ]
       }
+    },
+
+    {
+      "transform": [
+        {
+          "window": [{ "op": "rank", "as": "rDesc" }],
+          "sort": [{ "field": "Value", "order": "descending" }],
+          "groupby": ["Age Group"]
+        },
+        { "filter": "datum.rDesc == 1" }
+      ],
+      "layer": [
+        {
+          "mark": { "type": "point", "color": "green", "size": 100, "filled": true },
+          "encoding": {
+            "x": { "field": "Year", "type": "ordinal" },
+            "y": { "field": "Value", "type": "quantitative" }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": 8,
+            "dy": -8,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "x": { "field": "Year", "type": "ordinal" },
+            "y": { "field": "Value", "type": "quantitative" },
+            "color": { "field": "Age Group", "type": "nominal", "legend": null },
+            "text": { "field": "Value", "type": "quantitative", "format": ".1f" }
+          }
+        }
+      ]
+    },
+
+    {
+      "transform": [
+        {
+          "window": [{ "op": "rank", "as": "rAsc" }],
+          "sort": [{ "field": "Value", "order": "ascending" }],
+          "groupby": ["Age Group"]
+        },
+        { "filter": "datum.rAsc == 1" }
+      ],
+      "layer": [
+        {
+          "mark": { "type": "point", "color": "red", "size": 100, "filled": true },
+          "encoding": {
+            "x": { "field": "Year", "type": "ordinal" },
+            "y": { "field": "Value", "type": "quantitative" }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": 8,
+            "dy": -8,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "x": { "field": "Year", "type": "ordinal" },
+            "y": { "field": "Value", "type": "quantitative" },
+            "color": { "field": "Age Group", "type": "nominal", "legend": null },
+            "text": { "field": "Value", "type": "quantitative", "format": ".1f" }
+          }
+        }
+      ]
     }
   ],
   "config": {

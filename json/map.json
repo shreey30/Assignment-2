@@ -7,7 +7,8 @@
     {
       "name": "metric_select",
       "value": "Enterprises (Units)",
-      "bind": {"input": "select",
+      "bind": {
+        "input": "select",
         "options": [
           "Enterprises (Units)",
           "Enterprises (%)",
@@ -17,8 +18,10 @@
         "name": "Select Metric: "
       }
     },
-    { "name": "year_slider", "value": 2025,
-      "bind": {"input": "range", "min": 2016, "max": 2025, "step": 1, "name": "Year: "}
+    {
+      "name": "year_slider",
+      "value": 2025,
+      "bind": { "input": "range", "min": 2016, "max": 2025, "step": 1, "name": "Year: " }
     }
   ],
 
@@ -29,10 +32,9 @@
     { "data": { "graticule": true }, "mark": { "type": "geoshape", "stroke": "#d1d1d1", "strokeWidth": 0.5 }},
 
     {
-      "data": { "url": "data/mapdata.csv",
-                "format": { "type": "csv", "parse": {"Year": "number"} } },   
+      "data": { "url": "data/mapdata.csv", "format": { "type": "csv", "parse": { "Year": "number" } } },
       "transform": [
-        { "filter": "toNumber(datum.Year) == toNumber(year_slider)" },       
+        { "filter": "toNumber(datum.Year) == toNumber(year_slider)" },
         { "calculate": "datum[metric_select]", "as": "selectedValue" },
         {
           "lookup": "State/Territory",
@@ -46,17 +48,19 @@
           }
         }
       ],
-      "mark": {"type": "geoshape"},
+      "mark": { "type": "geoshape" },
       "encoding": {
-        "shape": {"field": "geometry", "type": "geojson"},
+        "shape": { "field": "geometry", "type": "geojson" },
         "color": {
-          "field": "selectedValue", "type": "quantitative",
-          "title": {"expr": "metric_select"}, "scale": {"scheme": "blues"}
+          "field": "selectedValue",
+          "type": "quantitative",
+          "title": { "expr": "metric_select" },
+          "scale": { "scheme": "blues" }
         },
         "tooltip": [
-          {"field": "State/Territory", "title": "State/Territory"},
-          {"field": "Year", "type": "quantitative"},
-          {"field": "selectedValue", "type": "quantitative", "title": {"expr": "metric_select"}}
+          { "field": "State/Territory", "title": "State/Territory" },
+          { "field": "Year", "type": "quantitative" },
+          { "field": "selectedValue", "type": "quantitative", "title": { "expr": "metric_select" } }
         ]
       }
     },
@@ -64,6 +68,45 @@
     { "data": { "url": "data/australia_states.topojson",
                 "format": { "type": "topojson", "feature": "ne_10m_admin_1_states_provinces" } },
       "mark": { "type": "geoshape", "fill": "transparent", "stroke": "#ffffff", "strokeWidth": 0.75 }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 155,
+            "lat": -40,
+            "note": "NSW and VIC host the\nlargest share of enterprises"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "align": "left",
+        "fill": "#000000",
+        "lineBreak": "\n",
+        "lineHeight": 14
+      },
+      "encoding": {
+        "longitude": { "field": "lon", "type": "quantitative" },
+        "latitude": { "field": "lat", "type": "quantitative" },
+        "text": { "field": "note" }
+      }
+    },
+    {
+      "data": { "url": "data/state-labels.csv" },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#000000",
+        "stroke": "white"
+      },
+      "encoding": {
+        "longitude": { "field": "lon", "type": "quantitative" },
+        "latitude": { "field": "lat", "type": "quantitative" },
+        "text": { "field": "label" }
+      }
     }
   ],
 

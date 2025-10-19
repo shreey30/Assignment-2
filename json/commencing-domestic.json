@@ -13,32 +13,156 @@
       "filter": "datum.Gender !== 'Indeterminate/intersex/other'"
     }
   ],
-  "mark": {
-    "type": "line",
-    "point": true,
-    "strokeWidth": 2
-  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {
+          "field": "Count",
+          "type": "quantitative",
+          "scale": {"domain": [140000, 280000]},
+          "title": "Number of Students"
+        },
+        "color": {
+          "field": "Gender",
+          "type": "nominal",
+          "legend": {"title": "Gender"}
+        },
+        "tooltip": [
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Gender", "type": "nominal"},
+          {"field": "Count", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Gender == 'Females'"},
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "Count", "order": "descending"}]
+        },
+        {"filter": "datum.rank == 1"}
+      ],
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Count", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": {"type": "point", "color": "green", "size": 100, "filled": true}},
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 8,
+            "dy": -8,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "Count", "type": "quantitative", "format": ","}
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"filter": "datum.Gender == 'Females'"},
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "Count", "order": "ascending"}]
+        },
+        {"filter": "datum.rank == 1"}
+      ],
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Count", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": {"type": "point", "color": "red", "size": 100, "filled": true}},
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -8,
+            "dy": 8,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "Count", "type": "quantitative", "format": ","}
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"filter": "datum.Gender == 'Males'"},
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "Count", "order": "descending"}]
+        },
+        {"filter": "datum.rank == 1"}
+      ],
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Count", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": {"type": "point", "color": "green", "size": 100, "filled": true}},
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 8,
+            "dy": -8,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "Count", "type": "quantitative", "format": ","}
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"filter": "datum.Gender == 'Males'"},
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "Count", "order": "ascending"}]
+        },
+        {"filter": "datum.rank == 1"}
+      ],
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Count", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": {"type": "point", "color": "red", "size": 100, "filled": true}},
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -8,
+            "dy": 8,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "Count", "type": "quantitative", "format": ","}
+          }
+        }
+      ]
+    }
+  ],
   "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-    "y": {
-      "field": "Count",
-      "type": "quantitative",
-      "scale": {"domain": [140000, 280000]},
-      "title": "Number of Students"
-    },
-    "color": {
-      "field": "Gender",
-      "type": "nominal",
-      "legend": {"title": "Gender"}
-    },
-    "tooltip": [
-      {"field": "Year", "type": "ordinal"},
-      {"field": "Gender", "type": "nominal"},
-      {"field": "Count", "type": "quantitative", "format": ","}
-    ]
+    "x": {"field": "Year", "type": "ordinal"},
+    "y": {"field": "Count", "type": "quantitative"}
   }
 }
