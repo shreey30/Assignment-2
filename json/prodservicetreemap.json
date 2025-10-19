@@ -12,12 +12,12 @@
   },
   "encoding": {
     "theta": {
-      "field": "University and Other Higher Education in Australia",
+      "field": "Share (%)",
       "type": "quantitative",
       "stack": true
     },
     "color": {
-      "field": "Category",
+      "field": "Product or service",
       "type": "nominal",
       "legend": {"title": "Product or Service"}
     }
