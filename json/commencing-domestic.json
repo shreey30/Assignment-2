@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": "container",
-  "title": "Gender Distribution of Domestic Students Over Time",
   "data": {"url": "data/figure-3-commencing-dome.csv"},
   "transform": [
     {

@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": "container",
-  "title": "Indicative Trends for University Participation",
   "data": { "url": "data/figure-6-indicative-tren.csv" },
   "transform": [
     { "fold": ["Age 18", "Age 19"], "as": ["Age Group", "Value"] }

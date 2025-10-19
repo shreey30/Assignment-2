@@ -1,8 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 500,
-  "title": "Change in Commencing Domestic Students by Field of Study (2015 vs. 2024)",
+  "height": "container",
   "data": {"url": "data/field-data.csv"},
   "transform": [
     {
